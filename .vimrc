@@ -63,3 +63,7 @@ set shiftwidth=2
 set softtabstop=2
 set expandtab
 map Y y$
+" use [p as escape
+imap [p <Esc>
+imap p[ <Esc>
+set timeoutlen=500

@@ -317,6 +317,13 @@ This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
   (setq ycmd-server-command (list "python2" (file-truename "~/repos/ycmd/ycmd")))
+  (setq-default evil-escape-key-sequence "[p")
+  (setq-default evil-escape-key-sequence "p[")
+  (defun maybe-glibc-style ()
+    (when (and buffer-file-name
+               (string-match "glibc" buffer-file-name))
+      (setq tab-width 8 indent-tabs-mode t)))
+  (add-hook 'c-mode-hook 'maybe-glibc-style)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
