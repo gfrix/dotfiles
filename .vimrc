@@ -64,6 +64,6 @@ set softtabstop=2
 set expandtab
 map Y y$
 " use [p as escape
-imap [p <Esc>
-imap p[ <Esc>
+imap l; <Esc>
+imap ;l <Esc>
 set timeoutlen=500
