@@ -67,3 +67,8 @@ map Y y$
 imap l; <Esc>
 imap ;l <Esc>
 set timeoutlen=500
+
+" the default vimdiff colorscheme is often unreadable
+if &diff
+  colorscheme desert
+endif

@@ -102,7 +102,21 @@ fi
 #####################################################
 # convenience aliases and functions
 #####################################################
+alias info='info --vi-keys'
 alias fnogit='find . -not \( -path ./.git -prune \) -type f'
+
+# Snippets:
+# To rename a couple of files throughout git history:
+# git filter-branch --force --tree-filter \
+#   'cd [subdir to restrict range of find] && { \
+#   find . -type f -print0 | xargs -0 sed -i "" \
+#   -e "s/fille1/new-file1/" -e "s/file2/new-file2/"; \
+#   find . -name file1.h -exec bash -c \
+#   '\''mv -f {} $(dirname {})/new-file1.h'\'' \; ; \
+#   find . -name file2.h -exec bash -c \
+#   '\''mv -f {} $(dirname {})/new-file2.h'\'' \; ; \
+#   cd [back to orig dir] ; }' \
+#   --tag-name-filter cat -- [start commit hash]..
 
 #####################################################
 # start of platform-dependent stuff

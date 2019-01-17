@@ -47,7 +47,7 @@ values."
      (shell :variables
             shell-default-height 30
             shell-default-position 'bottom)
-     spell-checking
+     ;;spell-checking
      syntax-checking
      version-control
 
@@ -321,9 +321,11 @@ you should place your code here."
   (setq-default evil-escape-key-sequence ";l")
   (defun maybe-glibc-style ()
     (when (and buffer-file-name
-               (string-match "glibc" buffer-file-name))
+               (or (string-match "glibc" buffer-file-name))
+                   (string-match "gcc" buffer-file-name))
       (setq tab-width 8 indent-tabs-mode t)))
   (add-hook 'c-mode-hook 'maybe-glibc-style)
+  (setq-default tab-width 8 indent-tabs-mode t)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
