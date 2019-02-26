@@ -74,11 +74,13 @@ esac
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
   test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-  ls --version 2>&1 | grep GNU >/dev/null && alias ls='ls --color=auto'
-  # Try -G for color (macOS)
-  ls -G >/dev/null 2>&1 && alias ls='ls -G'
-  # dir --version 2>&1 | grep GNU >/dev/null && alias dir='dir --color=auto'
-  # vdir --version 2>&1 | grep GNU >/dev/null && alias vdir='vdir --color=auto'
+  
+  # Check for GNU ls. Also try -G for color (macOS).
+  ls --version 2>&1 | grep GNU >/dev/null && alias ls='ls --color=auto' \
+    || ls -G >/dev/null 2>&1 && alias ls='ls -G'
+
+  dir --version 2>&1 | grep GNU >/dev/null && alias dir='dir --color=auto'
+  vdir --version 2>&1 | grep GNU >/dev/null && alias vdir='vdir --color=auto'
 
   alias grep='grep --color=auto'
   alias fgrep='fgrep --color=auto'
