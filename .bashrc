@@ -76,8 +76,11 @@ if [ -x /usr/bin/dircolors ]; then
   test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
   
   # Check for GNU ls. Also try -G for color (macOS).
-  ls --version 2>&1 | grep GNU >/dev/null && alias ls='ls --color=auto' \
-    || ls -G >/dev/null 2>&1 && alias ls='ls -G'
+  if ls --version 2>&1 | grep GNU >/dev/null; then
+    alias ls='ls --color=auto'
+  elif ls -G >/dev/null 2>&1; then
+    alias ls='ls -G'
+  fi
 
   dir --version 2>&1 | grep GNU >/dev/null && alias dir='dir --color=auto'
   vdir --version 2>&1 | grep GNU >/dev/null && alias vdir='vdir --color=auto'
