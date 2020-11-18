@@ -136,7 +136,7 @@ case "$TERM" in
 esac
 export TERM=$TERM
 export TERMINFO=$TERMINFO
-export PS1='\e[93m\s-\v\e[39m \e[91m\h\e[39m:\e[92m\W\e[39m\$ '
+export PS1='\[\e[93m\]\s-\v \[\e[91m\]\h\[\e[39m\]:\[\e[92m\]\W\[\e[39m\]\$ '
 
 # .base_exports should define ZOS_PORTED, ZOS_LOCAL, and ZOS_JAVA
 test -e "$HOME/.base_exports" && . "$HOME/.base_exports"
